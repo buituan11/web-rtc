@@ -6,7 +6,9 @@ let existingCall = null;
 navigator.mediaDevices.getUserMedia({video: true, audio: true})
     .then(function (stream) {
         // Success
-        $('#myStream').srcObject = stream;
+        let video = document.getElementById('mystream');
+        console.log(video, "video");
+        video.srcObject = stream;
         localStream = stream;
     }).catch(function (error) {
         // Error
@@ -87,7 +89,7 @@ function setupCallEventHandlers(call){
 }
 function addVideo(call, stream){
     $('#their-video').get(0).srcObject = stream;
-    $('#my-video').get(0).srcObject = stream;
+    console.log(stream);
 }
 function removeVideo(peerId){
     $('#their-video').get(0).srcObject = undefined;
